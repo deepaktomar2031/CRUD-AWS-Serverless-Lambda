@@ -27,3 +27,9 @@ functions:
       - httpApi:
           path: /user/{id}
           method: delete
+  create:
+    handler: index.createOrUpdate
+    events:
+      - httpApi:
+          path: /user
+          method: post
