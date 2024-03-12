@@ -28,8 +28,14 @@ functions:
           path: /user/{id}
           method: delete
   create:
-    handler: index.createOrUpdate
+    handler: index.createUser
     events:
       - httpApi:
           path: /user
           method: post
+  update:
+    handler: index.updateUser
+    events:
+      - httpApi:
+          path: /user/{id}
+          method: put

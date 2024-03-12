@@ -67,10 +67,34 @@ module.exports.deleteUserById = async (event, context, callback) => {
 };
 
 // Create User
-module.exports.createOrUpdate = async (event, context, callback) => {
+module.exports.createUser = async (event, context, callback) => {
   const requestBody = JSON.parse(event.body);
 
   const { success, data } = await createOrUpdate(requestBody);
+  if (success) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success, data }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+  }
+
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ success: false, message: "Error" }),
+  };
+};
+
+// Update User by ID
+module.exports.updateUser = async (event, context, callback) => {
+  const id = event.pathParameters.id;
+  const user = JSON.parse(event.body);
+  user.id = parseInt(id);
+
+  const { success, data } = await createOrUpdate(user);
+
   if (success) {
     return {
       statusCode: 200,
