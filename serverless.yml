@@ -13,5 +13,5 @@ functions:
     handler: index.readAllUsers
     events:
       - httpApi:
-          path: /
+          path: /users
           method: get
