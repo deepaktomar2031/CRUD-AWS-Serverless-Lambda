@@ -1,0 +1,17 @@
+org: deepaktomar2031
+app: serverless-lambda-aws
+service: serverless-lambda-aws
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: ap-south-1
+
+functions:
+  root:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
