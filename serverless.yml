@@ -10,7 +10,7 @@ provider:
 
 functions:
   root:
-    handler: index.handler
+    handler: index.readAllUsers
     events:
       - httpApi:
           path: /

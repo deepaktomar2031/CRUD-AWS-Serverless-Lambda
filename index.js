@@ -1,12 +1,24 @@
-module.exports.handler = async (event) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: "Hello from serverless!",
+const {
+  createOrUpdate,
+  readAllUsers,
+  getUserById,
+  deleteUserById,
+} = require("./src/functions.js");
+
+module.exports.readAllUsers = async (event, context, callback) => {
+  const { success, data } = await readAllUsers();
+
+  if (success) {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success, data }),
+      headers: {
+        "Access-Control-Allow-Origin": "*",
       },
-      null,
-      2
-    ),
+    };
+  }
+  return {
+    statusCode: 500,
+    body: JSON.stringify({ success: false, message: "Error" }),
   };
 };
