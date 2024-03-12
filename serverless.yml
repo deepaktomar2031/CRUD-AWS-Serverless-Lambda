@@ -21,3 +21,9 @@ functions:
       - httpApi:
           path: /user/{id}
           method: get
+  deleteUserById:
+    handler: index.deleteUserById
+    events:
+      - httpApi:
+          path: /user/{id}
+          method: delete
