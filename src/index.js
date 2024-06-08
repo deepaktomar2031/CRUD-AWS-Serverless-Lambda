@@ -3,7 +3,7 @@ const {
   readAllUsers,
   getUserById,
   deleteUserById,
-} = require("./src/functions.js");
+} = require("./functions.js");
 
 // Read all users
 module.exports.readAllUsers = async (event, context, callback) => {
